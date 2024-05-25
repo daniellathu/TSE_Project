@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkcalendar import Calendar
 from tkinter import messagebox, Toplevel
+from Main import Main
 from PIL import Image, ImageTk
 import pymysql
 from datetime import datetime, time, timedelta
@@ -71,7 +72,7 @@ class BookAppointment:
         self.serviceLabel.grid(row=4, column=0, pady=10, sticky='e')
         self.serviceVar = StringVar(self.frame)
         self.serviceVar.set("Checking")  # default value
-        self.serviceMenu = OptionMenu(self.frame, self.serviceVar, "Checking", "Cleaning", "Orthodontics")
+        self.serviceMenu = OptionMenu(self.frame, self.serviceVar, "Checking", "Dental Cleaning","Dental Filling", "Orthodontics","Tooth Extraction","Denture Fabrication")
         self.serviceMenu.config(font=('Times New Roman', 15), bg='white', width=28)
         self.serviceMenu.grid(row=4, column=1, pady=10, sticky='w')
 
@@ -223,5 +224,5 @@ class BookAppointment:
             con.close()
 
 # Run the application
-if __name__ == "__main__":
+if __name__ == "__Main__":
     app = BookAppointment()

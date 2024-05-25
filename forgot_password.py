@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import END, Button, Entry, Frame, Label
+from tkinter import *
 import pymysql
 from Main import Main
 from tkinter import *
