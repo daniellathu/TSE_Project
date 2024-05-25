@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
 from tkcalendar import Calendar
+from Main import Main
 from PIL import Image, ImageTk
 import pymysql
 from datetime import datetime, timedelta
@@ -204,5 +205,5 @@ class ViewAppointment:
                 self.tree.insert("", "end", values=row)
 
 # Run the application
-if __name__ == "__main__":
+if __name__ == "__Main__":
     app = ViewAppointment()

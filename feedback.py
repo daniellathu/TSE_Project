@@ -123,5 +123,5 @@ class FeedbackMember:
         except Exception as e:
             messagebox.showerror("Error", f"Failed to retrieve comments: {e}")
 # Run the application
-if __name__ == "__main__":
+if __name__ == "__Main__":
     app = FeedbackMember()
