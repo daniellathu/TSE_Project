@@ -53,7 +53,7 @@ class Main:
 
 
         # Forgot password button
-        self.forgotpassbutt = Button(self.frame, text='Forgot Password?',font=('Segoe UI Black',12),bd=0,bg='#d6d4d4', command=self.forgotpass)
+        self.forgotpassbutt = Button(self.frame, text='Forgot Password',font=('Segoe UI Black',12),bd=0,bg='#d6d4d4', command=self.forgotpass)
         self.forgotpassbutt.grid(row=5, column=1, padx=130,pady=20,sticky='w')
 
         # login button
