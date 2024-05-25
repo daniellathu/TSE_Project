@@ -9,7 +9,7 @@ class Main:
     def __init__(self):
         self.login_window = tk.Tk()
         self.login_window.resizable(False, False)
-        self.login_window.title('Signin Page')
+        self.login_window.title('Login Page')
         
         # Load the background image
         bg_image = Image.open('home.jpg')
