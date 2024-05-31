@@ -84,7 +84,7 @@ class Main:
             try:
                 query = 'USE user'
                 mycursor.execute(query)
-                query = 'SELECT * FROM data WHERE username=%s AND password=%s'
+                query = 'SELECT * FROM admin WHERE username=%s AND password=%s'
                 mycursor.execute(query, (self.username.get(), self.password.get()))
                 row = mycursor.fetchone()
                 if row is None:
