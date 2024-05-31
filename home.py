@@ -4,7 +4,6 @@ from tkinter import Frame
 from tkinter import Label
 from tkinter import Button
 from tkinter import messagebox
-from Main import Main
 from PIL import Image, ImageTk
 
 class Home:
@@ -106,5 +105,4 @@ class Home:
             from Main import Main
             Main()
 
-if __name__ == "__Main__":
-    Home()
+Home()
