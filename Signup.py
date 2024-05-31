@@ -2,7 +2,6 @@ import tkinter as tk
 import pymysql
 from tkinter import *
 from tkinter import messagebox
-from Main import Main
 from PIL import Image, ImageTk
 
 class Signup:
@@ -149,5 +148,4 @@ class Signup:
         self.signup_window.destroy()  # Destroy the signup window
         Main()  # Open the Main window
 
-if __name__ == "__Main__":
-    Signup()
+Signup()

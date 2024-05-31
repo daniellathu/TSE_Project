@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import *
 import pymysql
-from Main import Main
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
@@ -120,7 +119,5 @@ class forgot_password:
         self.forgot_password_window.destroy()
         from Main import Main
         Main()
-
-# Check if the script is run directly
-if __name__ == "__Main__":
-    forgot_password()
+        
+forgot_password()
