@@ -2,7 +2,6 @@ import tkinter as tk
 import pymysql
 from tkinter import *
 from tkinter import messagebox
-from Main import Main
 from PIL import Image, ImageTk
 
 class Edit:
@@ -177,5 +176,4 @@ class Edit:
         self.AgeEntry.delete(0, END)
         self.PhnoEntry.delete(0, END)
         self.EmailEntry.delete(0, END)
-if __name__ == "__Main__":
-    Edit()
+Edit()

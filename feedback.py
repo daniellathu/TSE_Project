@@ -2,7 +2,6 @@ import tkinter as tk
 import pymysql
 from tkinter import *
 from tkinter import messagebox
-from Main import Main
 from PIL import Image, ImageTk
 
 class FeedbackMember:
@@ -122,6 +121,5 @@ class FeedbackMember:
                 self.comment_table.insert(END, formatted_comment)
         except Exception as e:
             messagebox.showerror("Error", f"Failed to retrieve comments: {e}")
-# Run the application
-if __name__ == "__Main__":
-    app = FeedbackMember()
+
+FeedbackMember()

@@ -115,7 +115,4 @@ def cancel_selected_appointment(ic_number, appointments, appointment_listbox):
             messagebox.showerror("Database Error", str(e))
     else:
         messagebox.showwarning("Warning", "Please select an appointment to cancel.")
-
-# Run the application
-if __name__ == "__Main__":
-    app = CancelAppointment()
+CancelAppointment()

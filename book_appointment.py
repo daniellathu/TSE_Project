@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import *
 from tkcalendar import Calendar
 from tkinter import messagebox, Toplevel
-from Main import Main
 from PIL import Image, ImageTk
 import pymysql
 from datetime import datetime, time, timedelta
@@ -223,6 +222,4 @@ class BookAppointment:
         finally:
             con.close()
 
-# Run the application
-if __name__ == "__Main__":
-    app = BookAppointment()
+BookAppointment()
