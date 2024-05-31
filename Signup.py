@@ -146,6 +146,7 @@ class Signup:
 
     def login_page(self):
         self.signup_window.destroy()  # Destroy the signup window
+        from Main import Main
         Main()  # Open the Main window
 
 Signup()
