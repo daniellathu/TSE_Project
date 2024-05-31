@@ -131,7 +131,7 @@ class Signup:
                     name = self.NameEntry.get()
                     password = self.PassEntry.get()
 
-                    query_insert = 'INSERT INTO data (email, username, name, password) VALUES (%s, %s, %s, %s)'
+                    query_insert = 'INSERT INTO admin (email, username, name, password) VALUES (%s, %s, %s, %s)'
                     mycursor.execute(query_insert, (email, username, name, password))
             
                     con.commit()  # Commit the transaction
