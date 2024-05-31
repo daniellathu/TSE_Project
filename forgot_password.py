@@ -94,7 +94,7 @@ class forgot_password:
             mycursor = con.cursor()
 
             # Check if the username exists
-            query = 'SELECT * FROM data WHERE username=%s'
+            query = 'SELECT * FROM admin WHERE username=%s'
             mycursor.execute(query, (username,))
             row = mycursor.fetchone()
 
@@ -104,7 +104,7 @@ class forgot_password:
                 return
 
             # Update the password for the username
-            query_update = 'UPDATE data SET password=%s WHERE username=%s'
+            query_update = 'UPDATE admin SET password=%s WHERE username=%s'
             mycursor.execute(query_update, (new_password, username))
 
             con.commit()
