@@ -221,5 +221,5 @@ class BookAppointment:
             messagebox.showerror("Database Error", str(e))
         finally:
             con.close()
-
+    
 BookAppointment()
