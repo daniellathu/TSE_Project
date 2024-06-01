@@ -153,7 +153,7 @@ class Edit:
                 mycursor = con.cursor()
 
                 # Update member details
-                query = "UPDATE member SET Name=%s, Gender=%s, Age=%s, Phone=%s, Email=%s WHERE IC_number=%s"
+                query = "UPDATE member SET Name=%s, Gender=%s, Age=%s, Phone_number=%s, Email=%s WHERE IC_number=%s"
                 mycursor.execute(query, (name, gender, age, phone, email, ic_number))
                 con.commit()
 
