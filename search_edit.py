@@ -115,16 +115,16 @@ class Edit:
                     self.NameEntry.insert(END, member_details[1])
 
                     self.GenderEntry.delete(0, END)
-                    self.GenderEntry.insert(END, member_details[2])
+                    self.GenderEntry.insert(END, member_details[3])
 
                     self.AgeEntry.delete(0, END)
-                    self.AgeEntry.insert(END, member_details[3])
+                    self.AgeEntry.insert(END, member_details[2])
 
                     self.PhnoEntry.delete(0, END)
-                    self.PhnoEntry.insert(END, member_details[5])
+                    self.PhnoEntry.insert(END, member_details[4])
 
                     self.EmailEntry.delete(0, END)
-                    self.EmailEntry.insert(END, member_details[4])
+                    self.EmailEntry.insert(END, member_details[5])
 
                 else:
                     messagebox.showerror("Error", "No member found with this IC number!")
