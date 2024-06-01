@@ -196,7 +196,9 @@ class RegisterMember:
         self.PhnoEntry.delete(0, END)
         self.PhnoEntry.insert(0, 'Exp. 0123456789')
         self.PhnoEntry.config(fg='grey')
-        self.EmailEntry.delete(0, 'Exp,ali@gmail.com')
+        self.EmailEntry.insert(0, 'Exp,ali@gmail.com')
+        self.EmailEntry.delete(0,END)
+        self.EmailEntry.config(fg='grey')
 
 RegisterMember()
 
