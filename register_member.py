@@ -166,11 +166,11 @@ class RegisterMember:
                 # Create table if not exists
                 mycursor.execute('''
                     CREATE TABLE IF NOT EXISTS member(
-                        IC_number BIGINT PRIMARY KEY, 
+                        IC_number INT(12) PRIMARY KEY, 
                         name VARCHAR(50), 
                         age INT, 
                         gender VARCHAR(6), 
-                        phone_number INT, 
+                        phone_number INT(11), 
                         email VARCHAR(50)
                     )
                 ''')
