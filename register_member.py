@@ -3,6 +3,7 @@ import pymysql
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
+import re
 
 class RegisterMember:
 
@@ -137,6 +138,23 @@ class RegisterMember:
         if self.NameEntry.get() == '' or self.ICEntry.get() == '' or self.AgeEntry.get() == '' or self.GenderEntry.get() == '' or self.PhnoEntry.get() == '' or self.EmailEntry.get() == '':
             messagebox.showerror('Error', 'Please fill in all the fields')
         else:
+            icnum = self.ICEntry.get()
+            email = self.EmailEntry.get()
+            gender = self.GenderEntry.get().capitalize()  # Normalize input to prevent case sensitivity issues
+            email_pattern = re.compile(r'^[a-zA-Z0-9_.+-]+@gmail\.com$')
+
+            if len(icnum) != 12 or not icnum.isdigit():
+                messagebox.showerror('Error', 'Identification Card Number must be 12 digits')
+                return
+            
+            if not email_pattern.match(email):
+                messagebox.showerror('Error', 'Email must be in the format example@gmail.com')
+                return
+
+            if gender not in ['Female', 'Male']:
+                messagebox.showerror('Error', 'Gender must be either "Female" or "Male"')
+                return
+
             try:
                 con = pymysql.connect(host='localhost', user='root', password='')  # Update username and password here
                 mycursor = con.cursor()
@@ -148,30 +166,27 @@ class RegisterMember:
                 # Create table if not exists
                 mycursor.execute('''
                     CREATE TABLE IF NOT EXISTS member(
-                        IC_number VARCHAR(12) PRIMARY KEY, 
+                        IC_number BIGINT PRIMARY KEY, 
                         name VARCHAR(50), 
                         age INT, 
                         gender VARCHAR(6), 
-                        phone_number VARCHAR(10), 
+                        phone_number INT, 
                         email VARCHAR(50)
                     )
                 ''')
 
                 # Check if the IC number exists
                 query = 'SELECT * FROM member WHERE IC_number=%s'
-                mycursor.execute(query, (self.ICEntry.get(),))
+                mycursor.execute(query, (icnum,))
                 row = mycursor.fetchone()
 
                 if row is not None:
                     messagebox.showerror('Error', 'Member already exists')
                 else:
                     # Insert data
-                    icnum = self.ICEntry.get()
                     name = self.NameEntry.get()
                     age = self.AgeEntry.get()
-                    gender = self.GenderEntry.get()
                     phone_number = self.PhnoEntry.get()
-                    email = self.EmailEntry.get()
 
                     query_insert = 'INSERT INTO member (IC_number, name, age, gender, phone_number, email) VALUES (%s, %s, %s, %s, %s, %s)'
                     mycursor.execute(query_insert, (icnum, name, age, gender, phone_number, email))
@@ -201,4 +216,3 @@ class RegisterMember:
         self.EmailEntry.config(fg='grey')
 
 RegisterMember()
-

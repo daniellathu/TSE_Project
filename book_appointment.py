@@ -164,13 +164,13 @@ class BookAppointment:
             # Ensure appointments table exists and has the correct schema
             create_table_query = '''
                 CREATE TABLE IF NOT EXISTS appointments(
-                    ic_number VARCHAR(12),
+                    ic_number INT(12),
                     date DATE,
                     time VARCHAR(5),
                     service VARCHAR(20),
                     dentist VARCHAR(20),
                     status VARCHAR(20),
-                    PRIMARY KEY (date, time, dentist)
+                    PRIMARY KEY (ic_number)
                 )
             '''
             print("Creating appointments table if not exists:", create_table_query)
