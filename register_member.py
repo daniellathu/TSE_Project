@@ -168,7 +168,7 @@ class RegisterMember:
                     CREATE TABLE IF NOT EXISTS member(
                         IC_number INT(12) PRIMARY KEY, 
                         name VARCHAR(50), 
-                        age INT, 
+                        age INT(2), 
                         gender VARCHAR(6), 
                         phone_number INT(11), 
                         email VARCHAR(50)

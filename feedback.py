@@ -68,7 +68,7 @@ class FeedbackMember:
         # Create table if not exists
         self.cursor.execute('''
                     CREATE TABLE IF NOT EXISTS comments(
-                        member_name VARCHAR(100),
+                        member_name VARCHAR(50)PRIMARY KEY,
                         comment_text VARCHAR(300)
                     )
                 ''')
