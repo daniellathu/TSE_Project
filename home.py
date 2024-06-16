@@ -51,7 +51,7 @@ class Home:
         self.CancelAppointment = Button(self.frame, text="Cancel Appointment",font=('Segoe UI Black', 10), bg='#d6d4d4',command=self.cancel)
         self.CancelAppointment.grid(row=0, column=2, sticky="nsew")
 
-        self.View = Button(self.frame, text="View Bookings & Patient Records",font=('Segoe UI Black', 10), bg='#d6d4d4',command=self.view)
+        self.View = Button(self.frame, text="View Appointments and Members Records",font=('Segoe UI Black', 10), bg='#d6d4d4',command=self.view)
         self.View.grid(row=1, column=0, sticky="nsew")
 
         self.SearchAndEdit = Button(self.frame, text="Search and Edit Patient records",font=('Segoe UI Black', 10),bg='#d6d4d4',command=self.search)
