@@ -106,12 +106,18 @@ class ViewAppointment:
         filter_option = self.filter_var.get()
         status_option = self.status_var.get()
         current_date = datetime.now().date()
+        
+        # Use the selected date if it exists, otherwise use the current date
+        if appointment_date:
+            selected_date = datetime.strptime(appointment_date, '%Y-%m-%d').date()
+        else:
+            selected_date = current_date
 
         try:
             con = pymysql.connect(host='localhost', user='root', password='', db='user')
             mycursor = con.cursor()
 
-            if filter_option == "today":
+            if filter_option == "today" and not appointment_date:
                 if status_option == "none":
                     query = """
                     SELECT member.name, appointments.ic_number, appointments.date, appointments.time, appointments.service, appointments.dentist, appointments.status 
@@ -136,7 +142,7 @@ class ViewAppointment:
                     JOIN member ON appointments.ic_number = member.ic_number 
                     WHERE appointments.date >= %s
                     """
-                    mycursor.execute(query, (current_date,))
+                    mycursor.execute(query, (selected_date,))
                 else:
                     query = """
                     SELECT member.name, appointments.ic_number, appointments.date, appointments.time, appointments.service, appointments.dentist, appointments.status 
@@ -144,8 +150,8 @@ class ViewAppointment:
                     JOIN member ON appointments.ic_number = member.ic_number 
                     WHERE appointments.date >= %s AND appointments.status = %s
                     """
-                    mycursor.execute(query, (current_date, status_option))
-            else:  # past
+                    mycursor.execute(query, (selected_date, status_option))
+            elif filter_option == "past":
                 if status_option == "none":
                     query = """
                     SELECT member.name, appointments.ic_number, appointments.date, appointments.time, appointments.service, appointments.dentist, appointments.status 
@@ -153,7 +159,7 @@ class ViewAppointment:
                     JOIN member ON appointments.ic_number = member.ic_number 
                     WHERE appointments.date < %s
                     """
-                    mycursor.execute(query, (current_date,))
+                    mycursor.execute(query, (selected_date,))
                 else:
                     query = """
                     SELECT member.name, appointments.ic_number, appointments.date, appointments.time, appointments.service, appointments.dentist, appointments.status 
@@ -161,7 +167,24 @@ class ViewAppointment:
                     JOIN member ON appointments.ic_number = member.ic_number 
                     WHERE appointments.date < %s AND appointments.status = %s
                     """
-                    mycursor.execute(query, (current_date, status_option))
+                    mycursor.execute(query, (selected_date, status_option))
+            else:  # specific date selected
+                if status_option == "none":
+                    query = """
+                    SELECT member.name, appointments.ic_number, appointments.date, appointments.time, appointments.service, appointments.dentist, appointments.status 
+                    FROM appointments 
+                    JOIN member ON appointments.ic_number = member.ic_number 
+                    WHERE appointments.date = %s
+                    """
+                    mycursor.execute(query, (selected_date,))
+                else:
+                    query = """
+                    SELECT member.name, appointments.ic_number, appointments.date, appointments.time, appointments.service, appointments.dentist, appointments.status 
+                    FROM appointments 
+                    JOIN member ON appointments.ic_number = member.ic_number 
+                    WHERE appointments.date = %s AND appointments.status = %s
+                    """
+                    mycursor.execute(query, (selected_date, status_option))
 
             results = mycursor.fetchall()
             con.close()
@@ -169,6 +192,7 @@ class ViewAppointment:
             self.display_appointments(results)
         except Exception as e:
             messagebox.showerror("Database Error", str(e))
+
 
     def init_table(self):
         # Initialize treeview
