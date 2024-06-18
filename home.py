@@ -10,7 +10,7 @@ class Home:
     def __init__(self):
         self.home_window = tk.Tk()
         self.home_window.resizable(False, False)
-        self.home_window.title('Forgot Password Page')
+        self.home_window.title('Home Page')
 
         # Load the background image
         bg_image = Image.open('background.jpg')
